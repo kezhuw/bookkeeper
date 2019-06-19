@@ -162,7 +162,7 @@ public interface LedgerMetadata {
         IN_RECOVERY,
 
         /** The ledger is closed. No new entries may be added to it.
-            The length and lastEntryId are fixed. Ensembles may change, but only for rereplication.
+            The length and lastEntryId are fixed. Ensembles may change, but only for replication.
         */
         CLOSED
     }
