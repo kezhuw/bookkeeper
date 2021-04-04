@@ -352,7 +352,6 @@ class FileInfo extends Watchable<LastAddConfirmedUpdateNotification> {
      * it already fenced or failed to set fenced.
      */
     public boolean setFenced() throws IOException {
-        boolean returnVal = false;
         boolean changed = false;
         synchronized (this) {
             checkOpen(false);
@@ -364,13 +363,12 @@ class FileInfo extends Watchable<LastAddConfirmedUpdateNotification> {
                 stateBits |= STATE_FENCED_BIT;
                 needFlushHeader = true;
                 changed = true;
-                returnVal = true;
             }
         }
         if (changed) {
             notifyWatchers(LastAddConfirmedUpdateNotification.FUNC, Long.MAX_VALUE);
         }
-        return returnVal;
+        return changed;
     }
 
     // flush the header when header is changed
