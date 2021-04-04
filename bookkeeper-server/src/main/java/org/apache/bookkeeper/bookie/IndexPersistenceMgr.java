@@ -177,7 +177,7 @@ public class IndexPersistenceMgr {
      * the FileInfo from cache, that FileInfo is then evicted and closed before we
      * could even increase the reference counter.
      */
-    CachedFileInfo getFileInfo(final Long ledger, final byte[] masterKey) throws IOException {
+    CachedFileInfo getFileInfo(final long ledger, final byte[] masterKey) throws IOException {
         try {
             CachedFileInfo fi;
             persistenceMgrStats.getPendingGetFileInfoCounter().inc();
@@ -301,7 +301,7 @@ public class IndexPersistenceMgr {
      * This method is called whenever a ledger is deleted by the BookKeeper Client
      * and we want to remove all relevant data for it stored in the LedgerCache.
      */
-    void removeLedger(Long ledgerId) throws IOException {
+    void removeLedger(long ledgerId) throws IOException {
         // Delete the ledger's index file and close the FileInfo
         CachedFileInfo fi = null;
         try {
@@ -587,7 +587,7 @@ public class IndexPersistenceMgr {
         }
     }
 
-    private void writeBuffers(Long ledger,
+    private void writeBuffers(long ledger,
                               List<LedgerEntryPage> entries, FileInfo fi,
                               int start, int count) throws IOException, Bookie.NoLedgerException {
         if (LOG.isTraceEnabled()) {
