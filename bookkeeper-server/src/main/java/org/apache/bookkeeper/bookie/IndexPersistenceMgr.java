@@ -230,7 +230,7 @@ public class IndexPersistenceMgr {
      * @return new index file object.
      * @throws NoWritableLedgerDirException if there is no writable dir available.
      */
-    private File getNewLedgerIndexFile(Long ledger, File excludedDir)
+    private File getNewLedgerIndexFile(long ledger, File excludedDir)
                     throws NoWritableLedgerDirException {
         File dir = ledgerDirsManager.pickRandomWritableDirForNewIndexFile(excludedDir);
         String ledgerName = getLedgerName(ledger);
@@ -275,6 +275,8 @@ public class IndexPersistenceMgr {
                                 // ledgerId.
                                 String ledgerIdInHex = index.getName().replace(RLOC, "").replace(IDX, "");
                                 if (index.getName().endsWith(RLOC)) {
+                                    // FIXME: Long.parseLong(ledgerIdInHex, 16) ?
+                                    // * 0afe ==> exception
                                     if (findIndexFile(Long.parseLong(ledgerIdInHex)) != null) {
                                         if (!index.delete()) {
                                             LOG.warn("Deleting the rloc file " + index + " failed");
@@ -508,7 +510,7 @@ public class IndexPersistenceMgr {
         return fi.getLf().getParentFile().getParentFile().getParentFile();
     }
 
-    private void moveLedgerIndexFile(Long l, FileInfo fi) throws NoWritableLedgerDirException, IOException {
+    private void moveLedgerIndexFile(long l, FileInfo fi) throws NoWritableLedgerDirException, IOException {
         File newLedgerIndexFile = getNewLedgerIndexFile(l, getLedgerDirForLedger(fi));
         try {
             fi.moveToNewLocation(newLedgerIndexFile, fi.getSizeSinceLastWrite());
@@ -605,6 +607,7 @@ public class IndexPersistenceMgr {
             }
         }
         long totalWritten = 0;
+        // Useless loop ? Already loop in fi.write.
         while (buffs[buffs.length - 1].remaining() > 0) {
             long rc = 0;
             try {

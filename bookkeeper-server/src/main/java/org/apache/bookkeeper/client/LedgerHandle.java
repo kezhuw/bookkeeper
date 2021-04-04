@@ -1823,10 +1823,10 @@ public class LedgerHandle implements WriteHandle {
             }
 
             pendingAddOps.remove();
-            explicitLacFlushPolicy.updatePiggyBackedLac(lastAddConfirmed);
             pendingAddsSequenceHead = pendingAddOp.entryId;
             if (!writeFlags.contains(WriteFlag.DEFERRED_SYNC)) {
                 this.lastAddConfirmed = pendingAddsSequenceHead;
+                explicitLacFlushPolicy.updatePiggyBackedLac(lastAddConfirmed);
             }
 
             pendingAddOp.submitCallback(BKException.Code.OK);

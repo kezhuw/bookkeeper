@@ -494,6 +494,7 @@ class IndexInMemPageMgr {
             }
 
             if (canAllocate) {
+                // FIXME: entry key was null when added to clean pages
                 LedgerEntryPage lep = new LedgerEntryPage(pageSize, entriesPerPage, pageMapAndList);
                 lep.setLedgerAndFirstEntry(ledger, entry);
                 lep.usePage();

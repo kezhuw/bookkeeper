@@ -134,6 +134,7 @@ public class LedgerDescriptorImpl extends LedgerDescriptor {
                 if (rc == 0) {
                     fenceEntryPersisted.compareAndSet(false, true);
                     result.complete(true);
+                    // FIXME
                 } else {
                     result.complete(false);
                 }
