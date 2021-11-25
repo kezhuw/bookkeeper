@@ -39,7 +39,7 @@ apply from: "$rootDir/version.gradle"
 version = buildVersion
 
 releaseArtifacts {
-    fromProject("bookkeeper-dist")
+    fromProject("bookkeeper-dist-src")
     fromProject("bookkeeper-dist-all")
     fromProject("bookkeeper-dist-bkctl")
     fromProject("bookkeeper-dist-server")

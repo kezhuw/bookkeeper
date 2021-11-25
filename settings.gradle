@@ -42,7 +42,7 @@ include(':bookkeeper-benchmark',
         'bookkeeper-dist-bkctl',
         'bookkeeper-dist-server',
         'bookkeeper-dist-src',
-        'bookkeeper-dist:storage-bench',
+        // 'bookkeeper-dist:storage-bench',
         'bookkeeper-http:http-server',
         'bookkeeper-http:servlet-http-server',
         'bookkeeper-http:vertx-http-server',
@@ -97,8 +97,7 @@ include(':bookkeeper-benchmark',
         'tests:scripts',
         'tests:shaded:bookkeeper-server-shaded-test',
         'tests:shaded:bookkeeper-server-tests-shaded-test',
-        'tests:shaded:distributedlog-core-shaded-test',
-        'tools:framework')
+        'tests:shaded:distributedlog-core-shaded-test')
 
 project(':bookkeeper-tools').projectDir = file('tools/all')
 project(':bookkeeper-tools-framework').projectDir = file('tools/framework')
