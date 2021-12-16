@@ -26,6 +26,7 @@ dependencies {
 }
 
 protobuf {
+    generatedFilesBaseDir = "$projectDir/src"
     protoc {
         artifact = depLibs.protoc
     }
