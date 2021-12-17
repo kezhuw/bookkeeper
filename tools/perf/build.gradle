@@ -18,6 +18,7 @@
  */
 plugins {
     id 'java'
+    id 'application'
     id 'com.adarshr.test-logger'
 }
 
@@ -52,6 +53,7 @@ dependencies {
     implementation depLibs.hdrHistogram
     implementation depLibs.nettyBuffer
     implementation depLibs.commonsLang3
+    runtime depLibs.slf4jSimple
     compileOnly depLibs.spotbugsAnnotations
 
     testImplementation project(path: ':bookkeeper-common', configuration: 'testArtifacts')
@@ -68,4 +70,8 @@ dependencies {
 
 jar {
     archiveBaseName = 'bookkeeper-tools-perf'
+}
+
+application {
+    mainClass = 'org.apache.bookkeeper.tools.perf.BKPerf'
 }
