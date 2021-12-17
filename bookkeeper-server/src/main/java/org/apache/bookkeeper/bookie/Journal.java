@@ -509,6 +509,8 @@ public class Journal extends BookieCriticalThread implements CheckpointSource {
                             // queue will benefit from this force write - post a marker prior to issuing
                             // the flush so until this marker is encountered we can skip the force write
                             if (enableGroupForceWrites) {
+                                // XXX: Increase sleep time if deadlock not happen.
+                                Thread.sleep(1);
                                 forceWriteRequests.put(createForceWriteRequest(req.logFile, 0, 0, null, false, true));
                             }
 
