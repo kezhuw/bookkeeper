@@ -215,7 +215,7 @@ class PendingAddOp extends SafeRunnable implements WriteCallback {
         DistributionSchedule.WriteSet writeSet = lh.distributionSchedule.getWriteSet(entryId);
         try {
             if (!writeSet.contains(bookieIndex)) {
-                lh.sendAddSuccessCallbacks();
+//                lh.sendAddSuccessCallbacks();
                 return;
             }
         } finally {

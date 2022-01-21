@@ -2002,6 +2002,7 @@ public class LedgerHandle implements WriteHandle {
                 pendingAddOp.unsetSuccessAndSendWriteRequest(ensemble, bookieIndex);
             }
         }
+        sendAddSuccessCallbacks();
     }
 
     void registerOperationFailureOnBookie(BookieId bookie, long entryId) {
