@@ -713,7 +713,6 @@ public class BookieWriteLedgerTest extends
         entry = ByteBuffer.allocate(4);
         entry.putInt(rng.nextInt(maxInt));
         entry.position(0);
-        entries1.add(entry.array());
         try {
             lh.addEntry(3, entry.array());
             fail("AddEntry is called after the close of LedgerHandle,"
